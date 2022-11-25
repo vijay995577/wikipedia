@@ -1,0 +1,56 @@
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="{% static 'wikicss.css' %}" /> 
+    
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="wiki-search-header text-center">
+            <img class="wiki-logo" src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/wiki-logo-img.png" />
+            <br />
+            <form action='inp' >
+            <input name="searchInput" placeholder="Type a keyword and press Enter to search" type="search" class="search-input w-100" />
+            <button type='Submit' >Submit</button>
+            </form>
+        </div>
+        <div class="d-none" id="spinner">
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                </div>
+            </div>
+        </div>
+        <div id="searchResults" class="search-results"> </div>
+
+        {% if mt %}
+
+
+        {% for i,j,k in res %}
+       
+        <h2   class='result-title'>  <a  href={{j}}>  {{i}}</h2>
+        <p class='result-url'> <a class='result-url' href={{j}}>{{j}}  </a> </p>
+        <p class='link-description'> {{k}} </p>
+
+        {% endfor %}
+        {% else%}
+        {% if inp != '' %}
+        <p class='link-description'> No Results With This Name </p>
+        {% endif %}
+        {% endif %}
+        
+        {% if inp == '' %}
+        <p class='link-description'> Plase Enter Input </p>
+        {% endif %}
+        
+
+    </div>
+
+</body>
+
+</html>
