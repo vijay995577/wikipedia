@@ -1,1 +1,1 @@
-web: gunicorn crml.wsgi --log-file -
+web: gunicorn webproj.wsgi --log-file -
